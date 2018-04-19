@@ -1,18 +1,9 @@
-node-oauth
+node-oauth-bluemix
 ===========
-A simple oauth API for node.js .  This API allows users to authenticate against OAUTH providers, and thus act as OAuth consumers. It also has support for OAuth Echo, which is used for communicating with 3rd party media providers such as TwitPic and yFrog.
-
-Tested against Twitter (http://twitter.com), term.ie (http://term.ie/oauth/example/), TwitPic, and Yahoo!
-
-Also provides rudimentary OAuth2 support, tested against facebook, github, foursquare, google and Janrain.   For more complete usage examples please take a look at connect-auth (http://github.com/ciaranj/connect-auth)
-
-[![Clone in Koding](http://learn.koding.com/btn/clone_d.png)][koding]
-[koding]: https://koding.com/Teamwork?import=https://github.com/ciaranj/node-oauth/archive/master.zip&c=git1
-[![Pair on Thinkful](https://tf-assets-staging.s3.amazonaws.com/badges/thinkful_repo_badge.svg)][Thinkful]
-[Thinkful]: http://start.thinkful.com/node/?utm_source=github&utm_medium=badge&utm_campaign=node-oauth
+A simple oauth API for node.js *with modifications for Bluemix/IBM Cloud*!
 
 Installation
-============== 
+==============
 
     $ npm install oauth
 
@@ -51,7 +42,7 @@ describe('OAuth1.0',function(){
 });
 ```
 
-## OAuth2.0 
+## OAuth2.0
 ```javascript
 describe('OAuth2',function(){
   var OAuth = require('oauth');
@@ -61,10 +52,10 @@ describe('OAuth2',function(){
      var twitterConsumerKey = 'your key';
      var twitterConsumerSecret = 'your secret';
      var oauth2 = new OAuth2(server.config.keys.twitter.consumerKey,
-       twitterConsumerSecret, 
-       'https://api.twitter.com/', 
+       twitterConsumerSecret,
+       'https://api.twitter.com/',
        null,
-       'oauth2/token', 
+       'oauth2/token',
        null);
      oauth2.getOAuthAccessToken(
        '',
@@ -77,7 +68,9 @@ describe('OAuth2',function(){
 ```
 
 Change History
-============== 
+==============
+* 0.9.15
+    - OAuth2:   Allow specification of agent
 * 0.9.14
     - OAuth2:   Extend 'successful' token responses to include anything in the 2xx range.
 * 0.9.13
@@ -106,21 +99,21 @@ Change History
     - OAuth2:   Don't force a https request if given a http url (Thanks to Damien Mathieu)
     - OAuth2:   Supports specifying a grant-type of 'refresh-token' (Thanks to Luke Baker)
 * 0.9.6
-    - OAuth2:   Support for 302 redirects (Thanks Patrick Negri). 
+    - OAuth2:   Support for 302 redirects (Thanks Patrick Negri).
     - OAuth1/2: Some code tidying. ( Thanks to Raoul Millais )  
 * 0.9.5
     - OAuth1:   Allow usage of HTTP verbs other than GET for retrieving the access and request tokens (Thanks to Raoul Millais)  
 * 0.9.4
-    - OAuth1/2: Support for OAuth providers that drop connections (don't send response lengths? [Google]) 
+    - OAuth1/2: Support for OAuth providers that drop connections (don't send response lengths? [Google])
     - OAuth2:   Change getOAuthAccessToken to POST rather than GET ( Possible Breaking change!!! ... re-tested against Google, Github, Facebook, FourSquare and Janrain and seems ok .. is closer to the spec (v20) )  
 * 0.9.3
-    - OAuth1:   Adds support for following 301 redirects (Thanks bdickason) 
-* 0.9.2 
+    - OAuth1:   Adds support for following 301 redirects (Thanks bdickason)
+* 0.9.2
     - OAuth1:   Correct content length calculated for non-ascii post bodies (Thanks selead)  
     - OAuth1:   Allowed for configuration of the 'access token' name used when requesting protected resources (OAuth2)  
 * 0.9.1
-    - OAuth1:   Added support for automatically following 302 redirects (Thanks neyric) 
-    - OAuth1:   Added support for OAuth Echo (Thanks Ryan LeFevre). 
+    - OAuth1:   Added support for automatically following 302 redirects (Thanks neyric)
+    - OAuth1:   Added support for OAuth Echo (Thanks Ryan LeFevre).
     - OAuth1:   Improved handling of 2xx responses (Thanks Neil Mansilla).  
 * 0.9.0
     - OAuth1/2: Compatibility fixes to bring node-oauth up to speed with node.js 0.4x [thanks to Rasmus Andersson for starting the work ]  
@@ -130,7 +123,7 @@ Change History
     - OAuth1/2: Implements issue #15 (Use native SHA1 if available, 10x speed improvement!).
     - OAuth2:   Fixed issue #16 (Should use POST when requesting access tokens.).
     - OAuth2:   Fixed Issue #17 (OAuth2 spec compliance).  
-    - OAuth1:   Implemented enhancement #13 (Adds support for PUT & DELETE http verbs). 
+    - OAuth1:   Implemented enhancement #13 (Adds support for PUT & DELETE http verbs).
     - OAuth1:   Fixes issue #18 (Complex/Composite url arguments [thanks novemberborn])  
 * 0.8.3
     - OAuth1:   Fixed an issue where the auth header code depended on the Array's toString method (Yohei Sasaki) Updated the getOAuthRequestToken method so we can access google's OAuth secured methods. Also re-implemented and fleshed out the test suite.  
@@ -185,3 +178,8 @@ Contributors (In no particular order)
 * Michael Garvin
 * Andreas Knecht
 * AJ ONeal
+* Philip Skinner - https://github.com/PhilipSkinner
+
+and
+
+* Ben Smith
